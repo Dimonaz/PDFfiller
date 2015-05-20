@@ -6,6 +6,10 @@ package testpackage;
 
 public class ObjectRepository {
 
+    //GENERAL
+
+    public static final String loadingSign = "//div[@class='modal-loading']";
+
     //HOME PAGE
 
     public static final String homePageURL = "http://pdffiller.com";
@@ -49,5 +53,24 @@ public class ObjectRepository {
     public static final String submitNewPassButton = "//div[@class='block-reset-password']//button[text()='Submit']";
     public static final String fieldRequiredError = "//div[text()='This field is required']";
     public static final String notMatchingPassError = "//div[text()='Passwords entered do not match']";
+
+    // MY FORMS
+
+    public static final String myAccountLink = "//a[@class='h-nav__link '][text()='My Account']";
+    public static final String myFormsLink = "//a[@class='h-nav__link '][text()='My Forms']";
+    public static final String audTrailBtn = "//a[@id='btn_audit-trail']";
+    public static final String pMailBtn = "//div[@id='btn_action_pmail']";
+
+    //MY ACCOUNT
+
+    public static final String manageAccLabel = "//h1[text()='Manage your account']";
+    public static final String AccInfoTab = "//td[@data-url='/en/account/?op=account_info']";
+    public static final String pMailRadio = "//input[@id='send-type-3']";
+
+    //pMAIL PAGE
+
+    public static final String pMailLabel = "//h1[@class='product-page__header' and text()='pMail']";
+
+
 
 }

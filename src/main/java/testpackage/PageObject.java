@@ -1,5 +1,6 @@
 package testpackage;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +27,8 @@ public class PageObject {
     public static final String string_255 = "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111" +
                                             "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
     public static final String string_96 = "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111";
-    public static final String validEmail = "dmitriy.naydenov@gmail.com";
-    public static final String validPassword = "MyPassword123";
+    public static final String paidUserEmail = "dmitriy.naydenov@gmail.com";
+    public static final String paidUserPassword = "MyPassword123";
     public static final String newValidPassword = "MyNewPassword123";
     public static final String facebookEmail = "dimonaz@ukr.net";
     public static final String facebookPassword = "MyPassword123";
@@ -210,7 +211,7 @@ public class PageObject {
         openURL(loginURL);
         click(registerSectionButton);
         setField(registerEmailField, validRegisterEmail);
-        setField(registerPasswordField, validPassword);
+        setField(registerPasswordField, paidUserPassword);
         click(registerButton);
         waitIsVisible(userPicHeader);
 
@@ -249,7 +250,7 @@ public class PageObject {
 
         driver.get("http://mail.google.com");
         waitIsVisible("//input[@id='Email']");
-        getElement("//input[@id='Email']").sendKeys(validEmail);
+        getElement("//input[@id='Email']").sendKeys(paidUserEmail);
         click("//input[@id='next']");
         waitIsVisible("//input[@id='Passwd']");
         getElement("//input[@id='Passwd']").sendKeys(googlePassword);
@@ -272,8 +273,28 @@ public class PageObject {
                 waitIsVisible("//div[text()='Password Reset']");
             }
         }
+    }
 
+    public static void login (String username, String password){
 
-        }
+        openURL(loginURL);
+        waitIsVisible(emailField);
+        setField(emailField, username);
+        setField(passwordField, password);
+        click(loginButton);
+        Assert.assertTrue(isLoginSuccessful());
+    }
+
+    public static boolean verifySelected (String xpath){
+
+        if(getElement(xpath).isSelected()) return true;
+        return false;
+    }
+
+    public static boolean verifyDisplayed (String xpath){
+
+        if(getElement(xpath).isDisplayed()) return true;
+        return false;
+    }
 
 }

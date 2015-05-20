@@ -1,3 +1,7 @@
+/**
+ * Created by DimaN on 18.05.2015.
+ */
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -5,10 +9,6 @@ import org.junit.Test;
 
 import static testpackage.PageObject.*;
 import static testpackage.ObjectRepository.*;
-
-/**
- * Created by DimaN on 18.05.2015.
- */
 
 public class LoginTest {
 
@@ -59,10 +59,10 @@ public class LoginTest {
         click(loginButton);
         Assert.assertTrue(verifyMessageAppears(enterValidEmailMessage));
         clear(emailField);
-        setField(passwordField, validPassword);
+        setField(passwordField, paidUserPassword);
         click(loginButton);
         Assert.assertTrue(verifyMessageAppears(enterValidEmailMessage));
-        setField(emailField, validEmail);
+        setField(emailField, paidUserEmail);
         setField(passwordField, "invalid");
         click(loginButton);
         Assert.assertTrue(verifyMessageAppears(loginFailedMessage));
@@ -83,8 +83,8 @@ public class LoginTest {
         public void ignoreEmailSpaces (){
 
         openURL(loginURL);
-        setField(emailField, " " + validEmail + " ");
-        setField(passwordField, validPassword);
+        setField(emailField, " " + paidUserEmail + " ");
+        setField(passwordField, paidUserPassword);
         click(loginButton);
         Assert.assertTrue(isLoginSuccessful());
         logout();
@@ -140,7 +140,7 @@ public class LoginTest {
         click(registerButton);
         Assert.assertTrue(verifyMessageAppears(enterValidEmailMessage));
         clear(registerEmailField);
-        setField(registerPasswordField, validPassword);
+        setField(registerPasswordField, paidUserPassword);
         click(registerButton);
         Assert.assertTrue(verifyMessageAppears(enterValidEmailMessage));
         setField(registerEmailField, validRegisterEmail);
